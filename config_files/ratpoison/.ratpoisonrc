@@ -1,0 +1,28 @@
+escape s-z
+
+alias volumeUp exec amixer -D pulse set Master on 10%+
+alias volumeDown exec amixer -D pulse set Master 10%-
+alias volumeMute exec amixer -D pulse set Master toggle
+alias lockScreen exec cinnamon-screensaver-command -l
+alias launchPycharm exec ~/bin/pycharm
+
+# Locking screen
+definekey top C-M-l lockScreen
+
+# Switching 
+definekey top s-Tab focus
+definekey top M-Tab next
+
+# Shortcuts
+definekey top C-M-t exec x-terminal-emulator
+definekey top s-c exec google-chrome
+definekey top s-p launchPycharm
+
+# Volume
+definekey top XF86AudioRaiseVolume volumeUp
+definekey top XF86AudioLowerVolume volumeDown
+definekey top XF86AudioLowerVolume volumeMute
+
+# Spoof desktop environment name so Java apps work. No idea how
+exec wmname LG3D
+
