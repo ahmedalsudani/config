@@ -11,6 +11,8 @@ ZSH_THEME="frisk"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias myssh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
