@@ -18,6 +18,7 @@ bindsym XF86AudioMute exec amixer -D pulse set Master toggle
 
 # screenshot
 bindsym Print exec import -window root ~/Pictures/"Screenshot from $(date '+%F %T').png"
+bindsym Shift+Print exec import ~/Pictures/"Screenshot from $(date '+%F %T').png" 
 
 # lock screen
 bindsym Mod1+Ctrl+l exec cinnamon-screensaver-command -l 
