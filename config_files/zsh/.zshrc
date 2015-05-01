@@ -53,7 +53,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=$HOME/.AWS-ElasticBeanstalk-CLI-2.6.0/eb/linux/python2.7:$HOME/bin:$HOME/.cabal/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.AWS-ElasticBeanstalk-CLI-2.6.0/eb/linux/python2.7:$HOME/.cabal/bin:$PATH #Unecessary: $HOME/bin:/usr/local/bin:
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
@@ -71,3 +71,26 @@ export PATH=$HOME/.AWS-ElasticBeanstalk-CLI-2.6.0/eb/linux/python2.7:$HOME/bin:$
 
 # Evaluate virtualenv
 source /usr/local/bin/virtualenvwrapper.sh
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+#Confirm rm
+alias rm="rm -i"
+
+# Add android tools to PATH
+export PATH="$HOME/.android-sdk-linux/tools:$HOME/.android-sdk-linux/platform-tools:$PATH"
+
+# Add Elm to PATH
+export PATH="$HOME/.elm/.cabal-sandbox/bin:$PATH"
+
+# Add Pandoc to PATH
+export PATH="$HOME/.pandoc/.cabal-sandbox/bin:$PATH"
+
+# auto sudo tarsnap
+alias tarsnap="sudo tarsnap"
+
+BACKUP_DIRECTORIES=(Documents code)
+
+#thefuck
+alias fuck='eval $(thefuck $(fc -ln -1))'
