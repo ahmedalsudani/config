@@ -11,7 +11,10 @@ set $mod Mod4
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
 # Multiple monitors
-exec xrandr --output DFP6 --auto --pos 0x230 --output DFP7 --rotate left --auto --right-of DFP6 
+exec xrandr --output DFP6 --auto --pos 0x230
+exec xrandr --output DFP7 --rotate left --auto --pos 1680x0 
+
+exec sleep 1 && feh --bg-fill /home/ahmed/Pictures/Wallpapers/the_grass_aint_greener_by_fix_pena.jpg
 
 # Language
 bindsym Mod1+F1 exec setxkbmap us 
@@ -158,7 +161,7 @@ workspace_layout tabbed
 exec gtk-redshift
 exec udevadm trigger --subsystem-match=input --action=change
 exec google-chrome
-exec dogecoin-qt
+# exec dogecoin-qt
 exec i3-sensible-terminal
 
 # Start i3bar to display a workspace bar (plus the system information i3status

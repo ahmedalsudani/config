@@ -94,3 +94,7 @@ BACKUP_DIRECTORIES=(Documents code)
 
 #thefuck
 alias fuck='eval $(thefuck $(fc -ln -1))'
+
+export NVM_DIR="/home/ahmed/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
