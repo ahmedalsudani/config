@@ -39,7 +39,7 @@ alias myssh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment following line if you want to  shown in the command execution time stamp 
+# Uncomment following line if you want to  shown in the command execution time stamp
 # in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
 # yyyy-mm-dd
 # HIST_STAMPS="mm/dd/yyyy"
@@ -53,7 +53,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=$HOME/.AWS-ElasticBeanstalk-CLI-2.6.0/eb/linux/python2.7:$HOME/.cabal/bin:$PATH #Unecessary: $HOME/bin:/usr/local/bin:
+export PATH=$HOME/.AWS-ElasticBeanstalk-CLI-2.6.0/eb/linux/python2.7:$HOME/.cabal/bin:$HOME/bin:$PATH:$HOME/.gem/ruby/2.2.0/bin #Unecessary: /usr/local/bin:
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
@@ -70,7 +70,7 @@ export PATH=$HOME/.AWS-ElasticBeanstalk-CLI-2.6.0/eb/linux/python2.7:$HOME/.caba
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Evaluate virtualenv
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -98,3 +98,10 @@ alias fuck='eval $(thefuck $(fc -ln -1))'
 export NVM_DIR="/home/ahmed/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
+export TERMINAL=gnome-terminal
+
+[ "$TTY" = /dev/tty1 ] && startx
+
+# This is only here because gnome-terminal wasn't preserving directories
+# when I created new tabs
+. /etc/profile.d/vte.sh
