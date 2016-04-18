@@ -1,10 +1,9 @@
 [user]
-	name = Ahmed Al-Sudani
 	email = alsudani.ahmed@gmail.com
-[core]
-	editor = vi
-	excludesfile = /home/ahmed/.config/git/gitignore_global
+	name = Ahmed Al-Sudani
 [push]
 	default = current
-[color]
-	ui = auto
+[core]
+	excludesfile = /home/ahmed/.gitignore_global
+[color "diff"]
+	whitespace = red reverse
