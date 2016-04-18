@@ -70,7 +70,8 @@ export PATH=$HOME/.AWS-ElasticBeanstalk-CLI-2.6.0/eb/linux/python2.7:$HOME/.caba
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Evaluate virtualenv
-# source /usr/local/bin/virtualenvwrapper.sh
+export WORKON_HOME=~/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -87,10 +88,10 @@ export PATH="$HOME/.elm/.cabal-sandbox/bin:$PATH"
 # Add Pandoc to PATH
 export PATH="$HOME/.pandoc/.cabal-sandbox/bin:$PATH"
 
+BACKUP_DIRECTORIES=(Documents code)
+
 # auto sudo tarsnap
 alias tarsnap="sudo tarsnap"
-
-BACKUP_DIRECTORIES=(Documents code)
 
 #thefuck
 alias fuck='eval $(thefuck $(fc -ln -1))'
@@ -105,3 +106,5 @@ export TERMINAL=gnome-terminal
 # This is only here because gnome-terminal wasn't preserving directories
 # when I created new tabs
 . /etc/profile.d/vte.sh
+
+export LPASS_AGENT_TIMEOUT=18000
