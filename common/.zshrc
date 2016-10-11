@@ -88,7 +88,7 @@ export PATH="$HOME/.elm/.cabal-sandbox/bin:$PATH"
 # Add Pandoc to PATH
 export PATH="$HOME/.pandoc/.cabal-sandbox/bin:$PATH"
 
-BACKUP_DIRECTORIES=(Documents code)
+BACKUP_DIRECTORIES=(Documents)
 
 # auto sudo tarsnap
 alias tarsnap="sudo tarsnap"
@@ -108,3 +108,6 @@ export TERMINAL=gnome-terminal
 . /etc/profile.d/vte.sh
 
 export LPASS_AGENT_TIMEOUT=18000
+
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
