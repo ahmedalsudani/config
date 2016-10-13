@@ -30,6 +30,10 @@
 
 (global-undo-tree-mode)
 
+;; Start server if not running in terminal
+;; from http://unix.stackexchange.com/a/9154/47432
+(and window-system (server-start))
+
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
@@ -48,8 +52,10 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (show-paren-mode t)
+(setq-default indicate-empty-lines t)
+(setq c-default-style "linux"
+      c-basic-offset 8)
 
-(setq-default c-basic-offset 4)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -58,7 +64,7 @@
  '(js2-basic-offset 2)
  '(package-selected-packages
    (quote
-    (diff-hl idle-highlight-mode paredit ido-ubiquitous smex zencoding-mode undo-tree starter-kit seq rainbow-mode racket-mode pkg-info let-alist js2-mode haskell-mode flymake-jshint find-file-in-repository auto-complete auctex)))
+    (helm-gtags helm ggtags diff-hl idle-highlight-mode paredit ido-ubiquitous smex zencoding-mode undo-tree starter-kit seq rainbow-mode racket-mode pkg-info let-alist js2-mode haskell-mode flymake-jshint find-file-in-repository auto-complete auctex)))
  '(sh-indent-after-do (quote +)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -104,3 +110,35 @@
           (switch-to-buffer filebuffer)                                    ; simply switch
         (view-file file))                                                    ; ... view it
       (other-window -1))))                   ; give the attention back to the dired buffer
+
+;; I copied this without looking at what it does
+
+;; (setq
+;;  helm-gtags-ignore-case t
+;;  helm-gtags-auto-update t
+;;  helm-gtags-use-input-at-cursor t
+;;  helm-gtags-pulse-at-cursor t
+;;  helm-gtags-prefix-key "\C-cg"
+;;  helm-gtags-suggested-key-mapping t
+;;  )
+
+;; (require 'helm-gtags)
+;; ;; Enable helm-gtags-mode
+;; (add-hook 'dired-mode-hook 'helm-gtags-mode)
+;; (add-hook 'eshell-mode-hook 'helm-gtags-mode)
+;; (add-hook 'c-mode-hook 'helm-gtags-mode)
+;; (add-hook 'c++-mode-hook 'helm-gtags-mode)
+;; (add-hook 'asm-mode-hook 'helm-gtags-mode)
+
+;; (define-key helm-gtags-mode-map (kbd "C-c g a") 'helm-gtags-tags-in-this-function)
+;; (define-key helm-gtags-mode-map (kbd "C-j") 'helm-gtags-select)
+;; (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
+;; (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+;; (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
+;; (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
+
+(require 'ggtags)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+              (ggtags-mode 1))))
