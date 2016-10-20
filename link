@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+for i in common $(hostname); do
+    stow -v -t "$HOME" "$i"
+done
