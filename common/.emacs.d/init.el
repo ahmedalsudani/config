@@ -16,6 +16,7 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; Smex is ido
 (smex-initialize)
@@ -53,19 +54,10 @@
 
 (show-paren-mode t)
 (setq-default indicate-empty-lines t)
-(setq c-default-style "linux"
-      c-basic-offset 8)
+(setq-default c-default-style "linux"
+              c-basic-offset 8
+              indent-tabs-mode nil)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(js2-basic-offset 2)
- '(package-selected-packages
-   (quote
-    (helm-gtags helm ggtags diff-hl idle-highlight-mode paredit ido-ubiquitous smex zencoding-mode undo-tree starter-kit seq rainbow-mode racket-mode pkg-info let-alist js2-mode haskell-mode flymake-jshint find-file-in-repository auto-complete auctex)))
- '(sh-indent-after-do (quote +)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -142,3 +134,11 @@
           (lambda ()
             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
               (ggtags-mode 1))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (use-package undo-tree smex paredit ido-ubiquitous idle-highlight-mode helm-gtags ggtags diff-hl auto-complete auctex))))
