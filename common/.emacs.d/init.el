@@ -18,6 +18,8 @@
 (scroll-bar-mode 0)
 (fset 'yes-or-no-p 'y-or-n-p)
 
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
+
 ;; Smex is ido
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
@@ -145,3 +147,9 @@
 
 (require 'evil)
 (evil-mode 1)
+;; @see https://bitbucket.org/lyro/evil/issue/511/let-certain-minor-modes-key-bindings
+(eval-after-load 'ggtags
+  '(progn
+     (evil-make-overriding-map ggtags-mode-map 'normal)
+     ;; force update evil keymaps after ggtags-mode loaded
+     (add-hook 'ggtags-mode-hook #'evil-normalize-keymaps)))
