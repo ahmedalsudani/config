@@ -16,6 +16,7 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
+(set-face-attribute 'default nil :height 125)
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
@@ -39,6 +40,9 @@
 
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
 
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
@@ -143,7 +147,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (evil markdown-mode use-package undo-tree smex paredit ido-ubiquitous idle-highlight-mode helm-gtags ggtags diff-hl auto-complete auctex))))
+    (js2-mode company evil markdown-mode use-package undo-tree smex paredit ido-ubiquitous idle-highlight-mode helm-gtags ggtags diff-hl auto-complete auctex))))
 
 (require 'evil)
 (evil-mode 1)
