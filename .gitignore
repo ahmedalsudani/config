@@ -3,4 +3,5 @@
 /common/.emacs.d/smex-items
 /common/.emacs.d/.smex-items
 /common/.emacs.d/ido.last
+/common/.emacs.d/elpa/archives/*
 *~
