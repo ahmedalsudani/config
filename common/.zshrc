@@ -101,7 +101,8 @@ export NVM_DIR="/home/ahmed/.nvm"
 
 export TERMINAL=gnome-terminal
 
-[ "$TTY" = /dev/tty1 ] && startx
+[ "$TTY" = /dev/tty2 ] && startx
+[ "$TTY" = /dev/tty1 ] && vlock -c
 
 # This is only here because gnome-terminal wasn't preserving directories
 # when I created new tabs

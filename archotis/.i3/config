@@ -28,9 +28,9 @@ bindsym Mod1+F3 exec setxkbmap cn -option $keyboard_options
 floating_modifier $mod
 
 # control volume
-bindsym XF86AudioRaiseVolume exec amixer -D pulse set Master on 5%+
-bindsym XF86AudioLowerVolume exec amixer -D pulse set Master 5%-
-bindsym XF86AudioMute exec amixer -D pulse set Master toggle
+bindsym XF86AudioRaiseVolume exec pamixer -i 5
+bindsym XF86AudioLowerVolume exec pamixer -d 5
+bindsym XF86AudioMute exec pamixer -t
 
 # Play/pause
 #bindcode 172 exec mpc toggle
@@ -190,5 +190,5 @@ exec caffeine
 # finds out, if available)
 bar {
 	tray_output DVI-0
-	status_command py3status -c ~/.config/i3status/config
+	status_command i3status -c ~/.config/i3status/config
 }
