@@ -1,0 +1,52 @@
+general {
+        colors = true
+        interval = 1
+}
+
+order += "wireless wlp5s0"
+order += "run_watch VPN"
+order += "disk /"
+#order += "sysdata mem"
+order += "load"
+order += "volume master"
+order += "time"
+
+wireless wlp5s0 {
+        format_up = "W: (%quality at %essid) %ip"
+        format_down = "W: down"
+}
+
+run_watch VPN {
+        pidfile = "/var/run/openvpn*.pid"
+}
+
+time {
+	format = "%Y-%m-%d %H:%M:%S"
+}
+
+volume master {
+	format = "♪: %volume"
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
+}
+
+cpu_temperature 0 {
+	format = "T: %degrees °C"
+	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input"
+}
+
+load {
+	format = "Load average: %1min %5min %15min"
+}
+
+disk "/" {
+	format = "%free"
+}
+
+#sysdata "mem" {
+#	format = "Mem: {mem_used_percent}%"
+#	med_threshold = 65
+#	high_threshold = 80
+#	
+#}
