@@ -3,8 +3,6 @@ general {
         interval = 1
 }
 
-order += "wireless wlp5s0"
-order += "run_watch VPN"
 order += "disk /"
 #order += "sysdata mem"
 order += "load"
