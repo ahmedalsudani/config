@@ -5,7 +5,6 @@ general {
 
 order += "battery 0"
 order += "wireless wlp2s0"
-order += "run_watch VPN"
 order += "disk /"
 # order += "sysdata mem"
 order += "load"
