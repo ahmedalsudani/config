@@ -20,6 +20,8 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
+;; TODO find a good way to trigger completion
+;(global-set-key "\t" 'company-complete)
 
 ;; Smex is ido
 (smex-initialize)
@@ -56,9 +58,14 @@
              (define-key racket-mode-map (kbd "C-r") 'racket-run)
              (enable-paredit-mode)
              (auto-complete-mode)))
+(add-hook 'c++-mode-hook
+          '(lambda ()
+             (set (make-local-variable 'company-backends)
+                  '(company-clang company-gtags))))
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (show-paren-mode t)
+(setq column-number-mode t)
 (setq-default indicate-empty-lines t)
 (setq-default c-default-style "linux"
               c-basic-offset 8

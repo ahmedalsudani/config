@@ -93,9 +93,6 @@ BACKUP_DIRECTORIES=(Documents)
 # auto sudo tarsnap
 alias tarsnap="sudo tarsnap"
 
-#thefuck
-alias fuck='eval $(thefuck $(fc -ln -1))'
-
 export NVM_DIR="/home/ahmed/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
@@ -111,3 +108,15 @@ export LPASS_AGENT_TIMEOUT=18000
 
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
+
+# Confirm before running
+confirm() {
+    echo -n "Do you want to run $*? [N/y]"
+    read -sk REPLY
+    echo
+    if [ "$REPLY" == "y" -o "$REPLY" == "Y" ]; then
+        "$@"
+    else
+        echo "Cancelled by user"
+    fi
+}
