@@ -53,6 +53,7 @@
 (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+(add-hook 'markdown-mode-hook         #'turn-on-auto-fill)
 (add-hook 'racket-mode-hook
           '(lambda ()
              (define-key racket-mode-map (kbd "C-r") 'racket-run)
@@ -80,7 +81,7 @@
  '(js2-warning ((t nil))))
 
 ;; from http://stackoverflow.com/questions/19907939/how-can-one-quickly-browse-through-lots-of-files-in-emacs/19933337#19933337
-;; little modification to dired-mode that let's you browse through lots of files
+;; little modification to dired-mode that lets you browse through lots of files
 (add-hook 'dired-mode-hook
   (lambda()
     (define-key dired-mode-map (kbd "C-o") 'dired-view-current)     ; was dired-display-file
