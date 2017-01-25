@@ -20,9 +20,9 @@ exec sleep 1 && feh --bg-fill /home/ahmed/Pictures/che-stallman/che-stallman-wal
 exec xscreensaver -no-splash
 
 # Language
-bindsym Mod1+F1 exec setxkbmap us -option $keyboard_options
-bindsym Mod1+F2 exec setxkbmap ar -option $keyboard_options
-bindsym Mod1+F3 exec setxkbmap cn -option $keyboard_options
+bindsym $mod+F1 exec setxkbmap us -option $keyboard_options
+bindsym $mod+F2 exec setxkbmap ar -option $keyboard_options
+bindsym $mod+F3 exec setxkbmap cn -option $keyboard_options
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -44,14 +44,13 @@ bindsym Mod1+Ctrl+l exec xscreensaver-command -lock
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym Mod1+Ctrl+t exec i3-sensible-terminal
 
 # start browser session
-bindsym Mod1+Ctrl+f exec firefox
-bindsym Mod1+Ctrl+c exec chromium
+bindsym $mod+Ctrl+f exec firefox
+bindsym $mod+Ctrl+c exec chromium
 
 # start emacs
-bindsym Mod1+Ctrl+e exec emacs
+bindsym $mod+Ctrl+e exec emacs
 
 # kill focused window
 bindsym $mod+Shift+Q kill
