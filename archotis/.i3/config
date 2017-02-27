@@ -40,7 +40,10 @@ bindsym XF86AudioMute exec pamixer -t
 #bindsym Print exec scrot ~/Pictures/"Screenshot from $(date '+%F %T').png"
 
 # lock screen
-bindsym Mod1+Ctrl+l exec xscreensaver-command -lock
+bindsym $mod+Ctrl+l exec xscreensaver-command -lock
+
+# monitor sleep
+bindsym $mod+Ctrl+s exec sleep 1 && xset dpms force off
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
