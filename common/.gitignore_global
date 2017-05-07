@@ -2,6 +2,9 @@
 /Vagrantfile
 /.vagrant
 /*.iml
+GPATH
+GRTAGS
+GTAGS
 *~
 \#*#
 .#*

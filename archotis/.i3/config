@@ -4,7 +4,7 @@
 
 set $unit 1
 set $TERMINAL gnome-terminal
-set $keyboard_options -option ctrl:swapcaps
+set $keyboard_options -option caps:swapescape
 
 #Use super as $mod. If you need Alt, Mod1 is the code
 set $mod Mod4
@@ -13,7 +13,7 @@ set $mod Mod4
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
 # Multiple monitors
-exec xrandr --output HDMI-0 --auto --output DVI-0 ---primary -auto
+exec xrandr --output DVI-1 --auto --output DVI-0 ---primary -auto
 
 exec sleep 1 && feh --bg-fill /home/ahmed/Pictures/che-stallman/che-stallman-wallpaper.png
 
@@ -33,7 +33,9 @@ bindsym XF86AudioLowerVolume exec pamixer -d 5
 bindsym XF86AudioMute exec pamixer -t
 
 # Play/pause
-#bindcode 172 exec mpc toggle
+bindsym $mod+Ctrl+k exec mpc prev
+bindsym $mod+Ctrl+j exec mpc next
+bindsym $mod+Ctrl+p exec mpc toggle
 
 # screenshot
 #bindsym Print exec import -window root ~/Pictures/"Screenshot from $(date '+%F %T').png"
