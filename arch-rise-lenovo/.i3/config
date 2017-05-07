@@ -5,13 +5,14 @@
 set $unit 1
 set $TERMINAL gnome-terminal
 set $browser firefox
-set $keyboard_options -option ctrl:swapcaps
+set $keyboard_options -option caps:swapescape
 
 #Use super as $mod. If you need Alt, Mod1 is the code
 set $mod Mod4
 
 # font for window titles. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font pango:DejaVu Sans Mono 15
 
 exec sleep 1 && feh --bg-fill /home/ahmed/Pictures/che-stallman/che-stallman-wallpaper.png
 
