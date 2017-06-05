@@ -16,7 +16,7 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
-(set-face-attribute 'default nil :height 125)
+(set-face-attribute 'default nil :height 130)
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (global-set-key (kbd "C-x k") 'kill-this-buffer)

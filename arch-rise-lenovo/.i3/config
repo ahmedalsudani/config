@@ -12,7 +12,7 @@ set $mod Mod4
 
 # font for window titles. ISO 10646 = Unicode
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font pango:DejaVu Sans Mono 15
+font pango:DejaVu Sans Mono 10
 
 exec sleep 1 && feh --bg-fill /home/ahmed/Pictures/che-stallman/che-stallman-wallpaper.png
 
@@ -39,7 +39,7 @@ bindsym XF86AudioMute exec amixer -D pulse set Master toggle
 #bindsym Print exec scrot ~/Pictures/"Screenshot from $(date '+%F %T').png"
 
 # lock screen
-bindsym Mod1+Ctrl+l exec xscreensaver-command -lock
+bindsym $mod+Ctrl+l exec xscreensaver-command -lock && sleep 0.1 && dpms force off
 
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Ctrl+f exec $browser
