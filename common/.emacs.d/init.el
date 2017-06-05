@@ -117,6 +117,9 @@
         (view-file file))                                                    ; ... view it
       (other-window -1))))                   ; give the attention back to the dired buffer
 
+(setq python-shell-interpreter "ipython"
+       python-shell-interpreter-args "--simple-prompt -i")
+
 ;; I copied this without looking at what it does
 
 ;; (setq

@@ -1,0 +1,54 @@
+URxvt.perl-ext-common: default,clipboard,matcher,tabbed
+URxvt.iso14755: False
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.letterSpace: -1
+URxvt.font: xft:DejavuSansMono:pixelsize=14
+
+! black
+*color0: #465360
+
+! bright_black
+*color8: #73808d
+
+! red
+*color1: #bb0019
+
+! bright_red
+*color9: #d9001d
+
+! green
+*color2: #19bb00
+
+! bright_green
+*color10: #1dd900
+
+! yellow
+*color3: #bba200
+
+! bright_yellow
+*color11: #d9bc00
+
+! blue
+*color4: #0019bb
+
+! bright_blue
+*color12: #001dd9
+
+! magenta
+*color5: #a200bb
+
+! bright_magenta
+*color13: #bc00d9
+
+! cyan
+*color6: #00bba2
+
+! bright_cyan
+*color14: #00d9bc
+
+! white
+*color7: #a2aebb
+
+! bright_white
+*color15: #a2aebb

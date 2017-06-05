@@ -3,7 +3,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $unit 1
-set $TERMINAL gnome-terminal
+set $TERMINAL urxvt
 set $keyboard_options -option caps:swapescape
 
 #Use super as $mod. If you need Alt, Mod1 is the code
