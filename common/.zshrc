@@ -88,7 +88,7 @@ export PATH="$HOME/.elm/.cabal-sandbox/bin:$PATH"
 # Add Pandoc to PATH
 export PATH="$HOME/.pandoc/.cabal-sandbox/bin:$PATH"
 
-BACKUP_DIRECTORIES=(Documents)
+BACKUP_DIRECTORIES=(/etc Documents)
 
 # auto sudo tarsnap
 alias tarsnap="sudo tarsnap"

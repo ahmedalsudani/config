@@ -1,12 +1,17 @@
 URxvt.perl-ext-common: default,clipboard,matcher,tabbed
 URxvt.iso14755: False
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+!URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+!URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.letterSpace: -1
 URxvt.font: xft:DejavuSansMono:pixelsize=14
 
+URxvt*scrollTtyOutput:      false
+URxvt*scrollWithBuffer:     true
+URxvt*scrollTtyKeypress:    true
+URxvt*saveLines:            10000
+
 ! black
-*color0: #465360
+*color0: #000000
 
 ! bright_black
 *color8: #73808d
@@ -48,7 +53,7 @@ URxvt.font: xft:DejavuSansMono:pixelsize=14
 *color14: #00d9bc
 
 ! white
-*color7: #a2aebb
+*color7: #dddddd
 
 ! bright_white
 *color15: #a2aebb
