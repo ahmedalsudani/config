@@ -53,7 +53,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=$HOME/.AWS-ElasticBeanstalk-CLI-2.6.0/eb/linux/python2.7:$HOME/.cabal/bin:$HOME/bin:$PATH:$HOME/.gem/ruby/2.2.0/bin #Unecessary: /usr/local/bin:
+export PATH=$HOME/.AWS-ElasticBeanstalk-CLI-2.6.0/eb/linux/python2.7:$HOME/.cabal/bin:$HOME/bin:$PATH:$HOME/.gem/ruby/2.4.0/bin #Unecessary: /usr/local/bin:
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
@@ -108,6 +108,8 @@ export LPASS_AGENT_TIMEOUT=18000
 
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
+
+source ~/.config/zsh_archotis
 
 # Confirm before running
 confirm() {

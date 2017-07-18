@@ -53,7 +53,7 @@ URxvt*saveLines:            10000
 *color14: #00d9bc
 
 ! white
-*color7: #dddddd
+*color7: #bbbbbb
 
 ! bright_white
 *color15: #a2aebb
