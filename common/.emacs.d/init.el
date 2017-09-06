@@ -13,15 +13,34 @@
 (setq inhibit-startup-message t)
 ;; Don't let Emacs hurt your ears
 (setq visible-bell t)
+(setq tramp-default-method "ssh")
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
-(set-face-attribute 'default nil :height 130)
+(set-face-attribute 'default nil :height 140)
 (fset 'yes-or-no-p 'y-or-n-p)
+(define-coding-system-alias 'UTF-8 'utf-8)
+
 
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 ;; TODO find a good way to trigger completion
 ;(global-set-key "\t" 'company-complete)
+
+; Store backups in their own directory instead of littering the
+; whole filesystem with goddamn ~ files.
+(setq
+   backup-by-copying t ; don't clobber symlinks
+   backup-directory-alist
+    '(("." . "~/.emacs_backups")) ; don't litter my fs tree
+   version-control t ; use versioned numbers for backup files
+   kept-new-versions 6 ; number of newest versions to keep
+   kept-old-versions 2 ; number of oldest versions to keep
+   delete-old-versions t) ; delete excess backup versions silently
+
+; Reconfigure whitespace-mode for day-to-day use
+(require 'whitespace)
+(setq whitespace-style '(face tabs space-before-tab tab-mark))
+(global-whitespace-mode t)
 
 ;; Smex is ido
 (smex-initialize)
@@ -120,6 +139,21 @@
 (setq python-shell-interpreter "ipython"
        python-shell-interpreter-args "--simple-prompt -i")
 
+(define-derived-mode cheetah-mode html-mode "Cheetah"
+  (make-face 'cheetah-variable-face)
+  (font-lock-add-keywords
+   nil
+   '(
+     ("\\(#\\(from\\|else\\|include\\|extends\\|set\\|def\\|import\\|for\\|if\\|end\\)+\\)\\>" 1 font-lock-type-face)
+     ("\\(#\\(from\\|for\\|end\\)\\).*\\<\\(for\\|import\\|def\\|if\\|in\\)\\>" 3 font-lock-type-face)
+     ("\\(##.*\\)\n" 1 font-lock-comment-face)
+     ("\\(\\$\\(?:\\sw\\|}\\|{\\|\\s_\\)+\\)" 1 font-lock-variable-name-face))
+   )
+  (font-lock-mode 1)
+  )
+
+(setq auto-mode-alist (cons '( "\\.tmpl\\'" . cheetah-mode ) auto-mode-alist ))
+
 ;; I copied this without looking at what it does
 
 ;; (setq
@@ -158,7 +192,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (cider js2-mode lua-mode company evil markdown-mode use-package undo-tree smex paredit ido-ubiquitous idle-highlight-mode helm-gtags ggtags diff-hl auto-complete auctex))))
+    (elpy cider js2-mode lua-mode company evil markdown-mode use-package undo-tree smex paredit ido-ubiquitous idle-highlight-mode helm-gtags ggtags diff-hl auto-complete auctex))))
 
 (require 'evil)
 (evil-mode 1)
@@ -168,3 +202,9 @@
      (evil-make-overriding-map ggtags-mode-map 'normal)
      ;; force update evil keymaps after ggtags-mode loaded
      (add-hook 'ggtags-mode-hook #'evil-normalize-keymaps)))
+
+(eval-after-load 'elpy
+  '(progn
+     (evil-make-overriding-map elpy-mode-map 'normal)
+     ;; force update evil keymaps after ggtags-mode loaded
+     (add-hook 'elpy-mode-hook #'evil-normalize-keymaps)))
