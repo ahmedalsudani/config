@@ -1,6 +1,10 @@
 (package-initialize)
 (require 'package)
 
+;; loads caddr
+(require 'cl)
+
+
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
@@ -17,7 +21,7 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
-(set-face-attribute 'default nil :height 140)
+(set-face-attribute 'default nil :height 120)
 (fset 'yes-or-no-p 'y-or-n-p)
 (define-coding-system-alias 'UTF-8 'utf-8)
 
@@ -59,19 +63,22 @@
 ;; from http://unix.stackexchange.com/a/9154/47432
 (and window-system (server-start))
 
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
 (autoload 'js2-mode "js2-mode" nil t)
 
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
 (add-hook 'ielm-mode-hook             #'enable-paredit-mode)
 (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+(add-hook 'clojure-mode-hook          #'enable-paredit-mode)
+(add-hook 'cider-repl-mode-hook       #'enable-paredit-mode)
+(add-hook 'python-mode-hook           #'electric-pair-mode)
 (add-hook 'markdown-mode-hook         #'turn-on-auto-fill)
 (add-hook 'racket-mode-hook
           '(lambda ()
@@ -83,6 +90,12 @@
              (set (make-local-variable 'company-backends)
                   '(company-clang company-gtags))))
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(add-hook 'weechat-mode-hook '(lambda ()
+                                (evil-emacs-state)
+                                (emojify-mode)))
+
+
 
 (show-paren-mode t)
 (setq column-number-mode t)
@@ -103,7 +116,7 @@
 ;; little modification to dired-mode that lets you browse through lots of files
 (add-hook 'dired-mode-hook
   (lambda()
-    (define-key dired-mode-map (kbd "C-o") 'dired-view-current)     ; was dired-display-file
+    ;(define-key dired-mode-map (kbd "C-o") 'dired-find-file-other-window)     ; was dired-display-file
     (define-key dired-mode-map (kbd "n")   'dired-view-next)           ; was dired-next-line
     (define-key dired-mode-map (kbd "p")   'dired-view-previous))) ; was dired-previous-line
 
@@ -185,6 +198,7 @@
           (lambda ()
             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
               (ggtags-mode 1))))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -192,10 +206,17 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (elpy cider js2-mode lua-mode company evil markdown-mode use-package undo-tree smex paredit ido-ubiquitous idle-highlight-mode helm-gtags ggtags diff-hl auto-complete auctex))))
+    (web-mode neotree smartscan emojify weechat evil-surround elpy cider js2-mode lua-mode company evil markdown-mode use-package undo-tree smex paredit ido-ubiquitous idle-highlight-mode helm-gtags ggtags diff-hl auto-complete auctex)))
+ '(weechat-auto-monitor-buffers (quote ("yelp.#ad_backend")))
+ '(weechat-more-lines-amount 100)
+ '(weechat-notification-mode :monitored)
+ '(weechat-notification-types (quote (:highlight :query)))
+ '(weechat-read-only t))
 
 (require 'evil)
 (evil-mode 1)
+(global-evil-surround-mode)
+
 ;; @see https://bitbucket.org/lyro/evil/issue/511/let-certain-minor-modes-key-bindings
 (eval-after-load 'ggtags
   '(progn
@@ -206,5 +227,48 @@
 (eval-after-load 'elpy
   '(progn
      (evil-make-overriding-map elpy-mode-map 'normal)
-     ;; force update evil keymaps after ggtags-mode loaded
+     ;; force update evil keymaps after elpy-mode loaded
      (add-hook 'elpy-mode-hook #'evil-normalize-keymaps)))
+
+(with-eval-after-load 'evil
+  (add-to-list 'evil-emacs-state-modes 'cider-stacktrace-mode))
+
+;; This automatically registers a python-mode hook
+(elpy-enable)
+
+;; For weechat
+(require 'gnutls)
+(add-to-list 'gnutls-trustfiles (expand-file-name "~/.emacs.d/secrets/relay.cert"))
+(load-library "weechat-notifications")
+
+(let ((config (json-read-file "~/.emacs.d/secrets/weechat-config.json")))
+  (weechat-connect (cdr (assoc 'hostname config))
+                   (cdr (assoc 'port config))
+                   (cdr (assoc 'password config))
+                   'ssl))
+
+
+(add-hook 'weechat-connect-hook 'weechat-monitor-all-buffers)
+
+(setq browse-url-browser-function 'browse-url-chromium)
+
+(global-set-key (kbd "C-S-j") 'windmove-down)
+(global-set-key (kbd "C-S-k") 'windmove-up)
+(global-set-key (kbd "C-S-h") 'windmove-left)
+(global-set-key (kbd "C-S-l") 'windmove-right)
+
+;; disable (kbd C-x o)
+(global-set-key (kbd "C-x o") (lambda (&optional arg)
+                                (interactive "P")
+                                (message "No.")))
+
+(global-diff-hl-mode)
+
+(global-smartscan-mode)
+(global-set-key [f8] 'neotree-toggle)
+(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+(evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
+(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+(put 'scroll-left 'disabled nil)

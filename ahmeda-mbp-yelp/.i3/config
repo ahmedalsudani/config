@@ -7,17 +7,19 @@ set $TERMINAL urxvt
 set $keyboard_options -option caps:swapescape
 
 #Use super (Mod4) as $mod. If you need Alt, Mod1 is the code
-set $mod Mod1
+set $mod Mod4
 
 # font for window titles. ISO 10646 = Unicode
 font pango:DejaVu Sans Mono 10.2
 
 # Multiple monitors
-exec xrandr --output DVI-1 --auto --output DVI-0 ---primary -auto
+exec xrandr --output VGA-1 --auto --pos 0x0 --output VGA-2 --auto --pos 1920x0
 
 exec sleep 1 && feh --bg-fill /home/ahmed/Pictures/che-stallman/che-stallman-wallpaper.png
 
 exec xscreensaver -no-splash
+
+exec dunst &
 
 # Language
 bindsym $mod+F1 exec setxkbmap us -option $keyboard_options
@@ -31,11 +33,6 @@ floating_modifier $mod
 bindsym XF86AudioRaiseVolume exec pamixer -i 5
 bindsym XF86AudioLowerVolume exec pamixer -d 5
 bindsym XF86AudioMute exec pamixer -t
-
-# Play/pause
-bindsym $mod+Ctrl+k exec mpc prev
-bindsym $mod+Ctrl+j exec mpc next
-bindsym $mod+Ctrl+p exec mpc toggle
 
 # screenshot
 #bindsym Print exec import -window root ~/Pictures/"Screenshot from $(date '+%F %T').png"
@@ -52,7 +49,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # start browser session
 bindsym $mod+Ctrl+f exec firefox
-#bindsym $mod+Ctrl+c exec chromium
+bindsym $mod+Ctrl+c exec chromium
 
 # start emacs
 bindsym $mod+Ctrl+e exec emacs
@@ -69,12 +66,6 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-#bindsym $mod+Left focus left
-#bindsym $mod+Down focus down
-#bindsym $mod+Up focus up
-#bindsym $mod+Right focus right
-
 # or mod page-up ctrl page-down
 bindsym $mod+112 focus left
 bindsym $mod+117 focus right
@@ -84,12 +75,6 @@ bindsym $mod+Shift+H move left
 bindsym $mod+Shift+J move down
 bindsym $mod+Shift+K move up
 bindsym $mod+Shift+L move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+Ctrl+h split h
@@ -188,7 +173,6 @@ mouse_warping none
 focus_follows_mouse no
 
 exec unclutter -idle 2 &
-exec redshift-gtk
 exec udevadm trigger --subsystem-match=input --action=change
 exec i3-sensible-terminal
 exec caffeine
@@ -197,4 +181,5 @@ exec caffeine
 # finds out, if available)
 bar {
 	status_command i3status -c ~/.config/i3status/config
+        tray_output primary
 }
