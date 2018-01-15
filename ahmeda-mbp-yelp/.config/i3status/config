@@ -4,13 +4,14 @@ general {
 }
 
 order += "disk /"
+order += "wireless wlp5s0"
 #order += "sysdata mem"
 order += "load"
 order += "volume master"
 order += "time"
 
 wireless wlp5s0 {
-        format_up = "W: (%quality at %essid) %ip"
+        format_up = "W:%quality at %essid %ip"
         format_down = "W: down"
 }
 

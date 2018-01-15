@@ -4,7 +4,6 @@
 
 set $unit 1
 set $TERMINAL urxvt
-set $keyboard_options -option caps:swapescape
 
 #Use super (Mod4) as $mod. If you need Alt, Mod1 is the code
 set $mod Mod4
@@ -22,9 +21,9 @@ exec xscreensaver -no-splash
 exec dunst &
 
 # Language
-bindsym $mod+F1 exec setxkbmap us -option $keyboard_options
-bindsym $mod+F2 exec setxkbmap ar -option $keyboard_options
-bindsym $mod+F3 exec setxkbmap cn -option $keyboard_options
+bindsym $mod+F1 exec setxkbmap us -option
+bindsym $mod+F2 exec setxkbmap ar -option
+bindsym $mod+F3 exec setxkbmap cn -option
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

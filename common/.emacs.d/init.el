@@ -101,7 +101,7 @@
 (setq column-number-mode t)
 (setq-default indicate-empty-lines t)
 (setq-default c-default-style "linux"
-              c-basic-offset 8
+              c-basic-offset 4
               indent-tabs-mode nil)
 
 (custom-set-faces
@@ -206,12 +206,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (web-mode neotree smartscan emojify weechat evil-surround elpy cider js2-mode lua-mode company evil markdown-mode use-package undo-tree smex paredit ido-ubiquitous idle-highlight-mode helm-gtags ggtags diff-hl auto-complete auctex)))
- '(weechat-auto-monitor-buffers (quote ("yelp.#ad_backend")))
- '(weechat-more-lines-amount 100)
- '(weechat-notification-mode :monitored)
- '(weechat-notification-types (quote (:highlight :query)))
- '(weechat-read-only t))
+    (go-mode web-mode neotree smartscan emojify weechat evil-surround elpy cider js2-mode lua-mode company evil markdown-mode use-package undo-tree smex paredit ido-ubiquitous idle-highlight-mode helm-gtags ggtags diff-hl auto-complete auctex)))
 
 (require 'evil)
 (evil-mode 1)
