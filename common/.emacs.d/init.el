@@ -206,7 +206,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (go-mode web-mode neotree smartscan emojify weechat evil-surround elpy cider js2-mode lua-mode company evil markdown-mode use-package undo-tree smex paredit ido-ubiquitous idle-highlight-mode helm-gtags ggtags diff-hl auto-complete auctex)))
+    (go-mode web-mode neotree smartscan emojify weechat evil-surround elpy cider js2-mode lua-mode company evil markdown-mode use-package undo-tree smex paredit ido-ubiquitous idle-highlight-mode helm-gtags ggtags diff-hl auto-complete auctex))))
 
 (require 'evil)
 (evil-mode 1)
@@ -230,20 +230,6 @@
 
 ;; This automatically registers a python-mode hook
 (elpy-enable)
-
-;; For weechat
-(require 'gnutls)
-(add-to-list 'gnutls-trustfiles (expand-file-name "~/.emacs.d/secrets/relay.cert"))
-(load-library "weechat-notifications")
-
-(let ((config (json-read-file "~/.emacs.d/secrets/weechat-config.json")))
-  (weechat-connect (cdr (assoc 'hostname config))
-                   (cdr (assoc 'port config))
-                   (cdr (assoc 'password config))
-                   'ssl))
-
-
-(add-hook 'weechat-connect-hook 'weechat-monitor-all-buffers)
 
 (setq browse-url-browser-function 'browse-url-chromium)
 
