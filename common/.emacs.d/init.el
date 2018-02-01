@@ -56,6 +56,8 @@
 (ido-mode 1)
 (ido-everywhere 1)
 (ido-ubiquitous-mode 1)
+;; Goddamn ido-find-file
+(setq ido-auto-merge-work-directories-length -1)
 
 (global-undo-tree-mode)
 
@@ -206,7 +208,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (go-mode web-mode neotree smartscan emojify weechat evil-surround elpy cider js2-mode lua-mode company evil markdown-mode use-package undo-tree smex paredit ido-ubiquitous idle-highlight-mode helm-gtags ggtags diff-hl auto-complete auctex))))
+    (haskell-mode racket-mode rust-mode go-mode web-mode neotree smartscan emojify weechat evil-surround elpy cider js2-mode lua-mode company evil markdown-mode use-package undo-tree smex paredit ido-ubiquitous idle-highlight-mode helm-gtags ggtags diff-hl auto-complete auctex))))
 
 (require 'evil)
 (evil-mode 1)

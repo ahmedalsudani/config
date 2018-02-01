@@ -1,0 +1,181 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $unit 1
+set $TERMINAL urxvt
+
+#Use super (Mod4) as $mod. If you need Alt, Mod1 is the code
+set $mod Mod4
+
+# font for window titles. ISO 10646 = Unicode
+font pango:DejaVu Sans Mono 10.2
+
+exec sleep 1 && feh --bg-fill /home/ahmed/Pictures/che-stallman/che-stallman-wallpaper.png
+
+exec xscreensaver -no-splash
+exec redshift
+exec dunst &
+
+# Language
+bindsym $mod+F1 exec setxkbmap us -option
+bindsym $mod+F2 exec setxkbmap ar -option
+bindsym $mod+F3 exec setxkbmap cn -option
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# control volume
+bindsym XF86AudioRaiseVolume exec pamixer -i 5
+bindsym XF86AudioLowerVolume exec pamixer -d 5
+bindsym XF86AudioMute exec pamixer -t
+
+# screenshot
+#bindsym Print exec import -window root ~/Pictures/"Screenshot from $(date '+%F %T').png"
+#bindsym Print exec scrot ~/Pictures/"Screenshot from $(date '+%F %T').png"
+
+# lock screen
+bindsym $mod+Ctrl+l exec xscreensaver-command -lock
+
+# monitor sleep
+bindsym $mod+Ctrl+s exec sleep 1 && xset dpms force off
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# start browser session
+bindsym $mod+Ctrl+f exec firefox
+bindsym $mod+Ctrl+c exec chromium
+
+# start emacs
+bindsym $mod+Ctrl+e exec emacs
+
+# kill focused window
+bindsym $mod+Shift+Q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+z exec dmenu_run
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# or mod page-up ctrl page-down
+bindsym $mod+112 focus left
+bindsym $mod+117 focus right
+
+# move focused window
+bindsym $mod+Shift+H move left
+bindsym $mod+Shift+J move down
+bindsym $mod+Shift+K move up
+bindsym $mod+Shift+L move right
+
+# split in horizontal orientation
+bindsym $mod+Ctrl+h split h
+
+# split in vertical orientation
+bindsym $mod+Ctrl+v split v
+
+# toggle split orientation
+bindsym $mod+t split toggle
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, default)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout default
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+Shift+A focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+exclam move workspace 1
+bindsym $mod+Shift+at move workspace 2
+bindsym $mod+Shift+numbersign move workspace 3
+bindsym $mod+Shift+dollar move workspace 4
+bindsym $mod+Shift+percent move workspace 5
+bindsym $mod+Shift+asciicircum move workspace 6
+bindsym $mod+Shift+ampersand move workspace 7
+bindsym $mod+Shift+asterisk move workspace 8
+bindsym $mod+Shift+parenleft move workspace 9
+bindsym $mod+Shift+parenright move workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+C reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+R restart
+# exit i3 (logs you out of your X session)
+bindsym Shift+Mod1+Ctrl+L exit
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+# These bindings trigger as soon as you enter the resize mode
+
+# They resize the border in the direction you pressed, e.g.
+# when pressing left, the window is resized so that it has
+# more space on its left
+
+bindsym h resize shrink right $unit px or $unit ppt
+bindsym j resize grow   down $unit px or $unit ppt
+bindsym k resize shrink down $unit px or $unit ppt
+bindsym l resize grow   right $unit px or $unit ppt
+
+# same bindings, but for the arrow keys
+bindsym Left resize shrink right 10 px or 10 ppt
+bindsym Down resize grow   down 10 px or 10 ppt
+bindsym Up resize shrink down 10 px or 10 ppt
+bindsym Right resize grow   right 10 px or 10 ppt
+
+# back to normal: Enter or Escape
+bindsym Return mode "default"
+bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+workspace_layout tabbed
+
+# This is because there seems to be a bug in i3 (at least a bug in the spec)
+# mouse doesn't warp if I switch to different window on the same display, and
+# when i3 detects a mouse movement, the focus shifts back to the window I was
+# previously on
+# TODO fix the actual bug
+mouse_warping none
+focus_follows_mouse no
+
+exec unclutter -idle 2 &
+exec udevadm trigger --subsystem-match=input --action=change
+exec i3-sensible-terminal
+exec caffeine
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+	status_command i3status -c ~/.config/i3status/config
+        tray_output primary
+}

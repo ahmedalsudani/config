@@ -109,6 +109,8 @@ export LPASS_AGENT_TIMEOUT=18000
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 
+export PATH="$PATH:$HOME/.yarn/bin"
+
 source ~/.config/zsh_archotis
 
 # Confirm before running
@@ -122,3 +124,5 @@ confirm() {
         echo "Cancelled by user"
     fi
 }
+
+eval "$(ssh-agent)"
