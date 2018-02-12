@@ -111,6 +111,8 @@ export PATH="$PATH:$GOPATH/bin"
 
 export PATH="$PATH:$HOME/.yarn/bin"
 
+export PATH="$PATH:$HOME/.local/bin"
+
 source ~/.config/zsh_archotis
 
 # Confirm before running
