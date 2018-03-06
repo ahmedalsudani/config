@@ -208,7 +208,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (typescript-mode haskell-mode racket-mode rust-mode go-mode web-mode neotree smartscan emojify weechat evil-surround elpy cider js2-mode lua-mode company evil markdown-mode use-package undo-tree smex paredit idle-highlight-mode helm-gtags ggtags diff-hl auto-complete auctex))))
+    (merlin company-ghc tuareg typescript-mode haskell-mode racket-mode rust-mode go-mode web-mode neotree smartscan emojify weechat evil-surround elpy cider js2-mode lua-mode company evil markdown-mode use-package undo-tree smex paredit idle-highlight-mode helm-gtags ggtags diff-hl auto-complete auctex))))
 
 (require 'evil)
 (evil-mode 1)
@@ -255,3 +255,7 @@
 (evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
 (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
 (put 'scroll-left 'disabled nil)
+
+(require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
+
+(add-hook 'tuareg-abbrev-hook (lambda (x) (void)))

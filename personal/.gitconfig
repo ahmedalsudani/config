@@ -1,9 +1,9 @@
 [user]
-	email = alsudani.ahmed@gmail.com
+	email = git@ahmed.al-sudani.com
 	name = Ahmed Al-Sudani
 [push]
 	default = current
 [core]
-	excludesfile = /home/ahmed/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [color "diff"]
 	whitespace = red reverse

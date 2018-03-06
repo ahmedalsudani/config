@@ -1,0 +1,9 @@
+[user]
+	email = ahmed.al-sudani@uwaterloo.ca
+	name = Ahmed Al-Sudani
+[push]
+	default = current
+[core]
+	excludesfile = ~/.gitignore_global
+[color "diff"]
+	whitespace = red reverse
