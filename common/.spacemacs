@@ -138,6 +138,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(spolsky
+                         apropospriate-light
                          monokai
                          ritchie
                          monochrome-bright
@@ -324,7 +325,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (setq custom-file (expand-file-name ".custom.el" user-home-directory))
   (when (file-exists-p custom-file)
     (load custom-file))
 
@@ -332,6 +333,11 @@ you should place your code here."
   (global-set-key (kbd "C-S-k") 'windmove-up)
   (global-set-key (kbd "C-S-h") 'windmove-left)
   (global-set-key (kbd "C-S-l") 'windmove-right)
+
+  (global-smartscan-mode 1)
+  (show-paren-mode)
+
+  (global-evil-search-highlight-persist 0)
 
   (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
   (add-hook 'ielm-mode-hook             #'enable-paredit-mode)
@@ -341,8 +347,5 @@ you should place your code here."
   (add-hook 'clojure-mode-hook          #'enable-paredit-mode)
   (add-hook 'cider-repl-mode-hook       #'enable-paredit-mode)
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-  (global-smartscan-mode 1)
-  (show-paren-mode)
 
   (require 'opam-user-setup "~/.emacs.d/opam-user-setup.el"))
