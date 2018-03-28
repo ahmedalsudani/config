@@ -350,4 +350,7 @@ you should place your code here."
   (add-hook 'cider-repl-mode-hook       #'enable-paredit-mode)
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-  (require 'opam-user-setup "~/.emacs.d/opam-user-setup.el"))
+  (let (opam-file "~/.emacs.d/opam-user-setup.el")
+    (when (file-exists-p opam-file)
+      (require 'opam-user-setup opam-file)))
+  )
