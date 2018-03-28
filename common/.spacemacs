@@ -318,7 +318,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  )
+  (setq custom-file (expand-file-name ".custom.el" user-home-directory)))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -327,7 +327,6 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq custom-file (expand-file-name ".custom.el" user-home-directory))
   (when (file-exists-p custom-file)
     (load custom-file))
 
