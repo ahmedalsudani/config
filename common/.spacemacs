@@ -32,12 +32,13 @@ values."
    dotspacemacs-configuration-layers
    '(
      ocaml
+     python
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     auto-completion
+     ;; auto-completion
      better-defaults
      haskell
      emacs-lisp
@@ -139,6 +140,7 @@ values."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(spolsky
                          apropospriate-light
+                         default
                          monokai
                          ritchie
                          monochrome-bright
@@ -149,7 +151,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 15
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
