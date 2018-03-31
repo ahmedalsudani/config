@@ -1,55 +1,23 @@
 ;; -*- mode: emacs-lisp -*-
-;; This file is loaded by Spacemacs at startup.
-;; It must be stored in your home directory.
 
 (defun dotspacemacs/layers ()
-  "Configuration Layers declaration.
-You should not put any user code in this function besides modifying the variable
-values."
   (setq-default
-   ;; Base distribution to use. This is a layer contained in the directory
-   ;; `+distribution'. For now available distributions are `spacemacs-base'
-   ;; or `spacemacs'. (default 'spacemacs)
    dotspacemacs-distribution 'spacemacs-base
-   ;; Lazy installation of layers (i.e. layers are installed only when a file
-   ;; with a supported type is opened). Possible values are `all', `unused'
-   ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
-   ;; not listed in variable `dotspacemacs-configuration-layers'), `all' will
-   ;; lazy install any layer that support lazy installation even the layers
-   ;; listed in `dotspacemacs-configuration-layers'. `nil' disable the lazy
-   ;; installation feature and you have to explicitly list a layer in the
-   ;; variable `dotspacemacs-configuration-layers' to install it.
-   ;; (default 'unused)
    dotspacemacs-enable-lazy-installation 'unused
-   ;; If non-nil then Spacemacs will ask for confirmation before installing
-   ;; a layer lazily. (default t)
    dotspacemacs-ask-for-lazy-installation t
-   ;; If non-nil layers with lazy install support are lazy installed.
-   ;; List of additional paths where to look for configuration layers.
-   ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
-   ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
      ocaml
      python
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
-     ;; auto-completion
+     auto-completion
      better-defaults
      haskell
      emacs-lisp
      git
      helm
-     ;; ivy
      markdown
      org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
      spacemacs-evil
      spacemacs-ui-visual
      ;; spell-checking
@@ -57,37 +25,18 @@ values."
      themes-megapack
      version-control
      )
-   ;; List of additional packages that will be installed without being
-   ;; wrapped in a layer. If you need some configuration for these
-   ;; packages, then consider creating a layer. You can also put the
-   ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages
    '(
      idle-highlight-mode
      paredit
      smartscan
+     org-caldav
      )
-   ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
-   ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '()
-   ;; Defines the behaviour of Spacemacs when installing packages.
-   ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
-   ;; `used-only' installs only explicitly used packages and uninstall any
-   ;; unused packages as well as their unused dependencies.
-   ;; `used-but-keep-unused' installs only the used packages but won't uninstall
-   ;; them if they become unused. `all' installs *all* packages supported by
-   ;; Spacemacs and never uninstall them. (default is `used-only')
    dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
-  "Initialization function.
-This function is called at the very startup of Spacemacs initialization
-before layers configuration.
-You should not put any user code in there besides modifying the variable
-values."
-  ;; This setq-default sexp is an exhaustive list of all the supported
-  ;; spacemacs settings.
   (setq-default
    ;; If non nil ELPA repositories are contacted via HTTPS whenever it's
    ;; possible. Set it to nil if you have no way to use HTTPS in your
@@ -312,34 +261,34 @@ values."
    ))
 
 (defun dotspacemacs/user-init ()
-  "Initialization function for user code.
-It is called immediately after `dotspacemacs/init', before layer configuration
-executes.
- This function is mostly useful for variables that need to be set
-before packages are loaded. If you are unsure, you should try in setting them in
-`dotspacemacs/user-config' first."
   (setq custom-file (expand-file-name ".custom.el" user-home-directory)))
 
 (defun dotspacemacs/user-config ()
-  "Configuration function for user code.
-This function is called at the very end of Spacemacs initialization after
-layers configuration.
-This is the place where most of your configurations should be done. Unless it is
-explicitly specified that a variable should be set before a package is loaded,
-you should place your code here."
   (when (file-exists-p custom-file)
     (load custom-file))
 
+  ;; Key bindings
+  ;; ============
   (global-set-key (kbd "C-S-j") 'windmove-down)
   (global-set-key (kbd "C-S-k") 'windmove-up)
   (global-set-key (kbd "C-S-h") 'windmove-left)
   (global-set-key (kbd "C-S-l") 'windmove-right)
 
+  ;; Global modes
+  ;; ============
+  ;; Allows for navigating to symbol occurances using M-n, M-p
   (global-smartscan-mode 1)
+  ;; Highlights matching paren
   (show-paren-mode)
-
+  ;; Disables annoying behaviour where search highlight does not disappear after
+  ;; moving cursor
   (global-evil-search-highlight-persist 0)
+  ;; Window sizes follow the golden ratio
+  (spacemacs/toggle-golden-ratio-on)
 
+
+  ;; Hooks
+  ;; =====
   (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
   (add-hook 'ielm-mode-hook             #'enable-paredit-mode)
   (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
@@ -349,6 +298,8 @@ you should place your code here."
   (add-hook 'cider-repl-mode-hook       #'enable-paredit-mode)
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+  ;; OCaml
+  ;; =====
   (let (opam-file "~/.emacs.d/opam-user-setup.el")
     (when (file-exists-p opam-file)
       (require 'opam-user-setup opam-file)))
