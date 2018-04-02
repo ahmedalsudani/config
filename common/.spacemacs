@@ -8,15 +8,17 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
+     emacs-lisp
+     haskell
+     latex
+     markdown
      ocaml
      python
+
      auto-completion
      better-defaults
-     haskell
-     emacs-lisp
      git
      helm
-     markdown
      org
      spacemacs-evil
      spacemacs-ui-visual
