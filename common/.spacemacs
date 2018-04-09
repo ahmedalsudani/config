@@ -9,6 +9,7 @@
    dotspacemacs-configuration-layers
    '(
      emacs-lisp
+     go
      haskell
      latex
      markdown
