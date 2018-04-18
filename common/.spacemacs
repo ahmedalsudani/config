@@ -15,6 +15,7 @@
      markdown
      ocaml
      python
+     shell-scripts
 
      auto-completion
      better-defaults
@@ -23,7 +24,7 @@
      org
      spacemacs-evil
      spacemacs-ui-visual
-     ;; spell-checking
+     spell-checking
      syntax-checking
      themes-megapack
      version-control
