@@ -4,20 +4,9 @@ general {
 }
 
 order += "disk /"
-order += "wireless wlp6s0"
-#order += "sysdata mem"
 order += "load"
 order += "volume master"
 order += "time"
-
-wireless wlp6s0 {
-        format_up = "W:%quality at %essid %ip"
-        format_down = "W: down"
-}
-
-run_watch VPN {
-        pidfile = "/var/run/openvpn*.pid"
-}
 
 time {
 	format = "%Y-%m-%d %H:%M:%S"
@@ -43,9 +32,3 @@ disk "/" {
 	format = "%free"
 }
 
-#sysdata "mem" {
-#	format = "Mem: {mem_used_percent}%"
-#	med_threshold = 65
-#	high_threshold = 80
-#	
-#}

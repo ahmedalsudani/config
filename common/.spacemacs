@@ -278,6 +278,8 @@
   (global-set-key (kbd "C-S-h") 'windmove-left)
   (global-set-key (kbd "C-S-l") 'windmove-right)
 
+  (evil-ex-define-cmd "q" 'kill-this-buffer)
+
   ;; Global modes
   ;; ============
   ;; Allows for navigating to symbol occurances using M-n, M-p
