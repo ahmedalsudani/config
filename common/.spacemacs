@@ -20,8 +20,10 @@
      auto-completion
      better-defaults
      git
+     gtags
      helm
      org
+     perforce
      spacemacs-evil
      spacemacs-ui-visual
      spell-checking
