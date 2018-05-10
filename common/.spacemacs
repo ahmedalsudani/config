@@ -8,13 +8,19 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
+     c-c++
+     ;; This is a private layer
+     ;; (https://github.com/rgemulla/spacemacs-layers/tree/master/%2Blang/elpy)
+     ;; Using it because anacanda-mode is complaining that it can't install the
+     ;; server, and I don't want to debug right now
+     ;elpy
      emacs-lisp
      go
      haskell
      latex
      markdown
      ocaml
-     python
+     ;python
      shell-scripts
 
      auto-completion
@@ -40,7 +46,8 @@
      )
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '()
-   dotspacemacs-install-packages 'used-only))
+   dotspacemacs-install-packages 'used-only)
+  '((spell-checking :variables spell-checking-enable-by-default nil)))
 
 (defun dotspacemacs/init ()
   (setq-default
@@ -260,7 +267,7 @@
    dotspacemacs-default-package-repository nil
    ;; Delete whitespace while saving buffer. Possible values are `all'
    ;; to aggressively delete empty line and long sequences of whitespace,
-   ;; `trailing' to delete only the whitespace at end of lines, `changed'to
+   ;; `trailing' to delete only the whitespace at end of lines, `changed' to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup nil
@@ -273,6 +280,8 @@
   (when (file-exists-p custom-file)
     (load custom-file))
 
+  (setq-default spacemacs-show-trailing-whitespace nil)
+
   ;; Key bindings
   ;; ============
   (global-set-key (kbd "C-S-j") 'windmove-down)
@@ -281,6 +290,13 @@
   (global-set-key (kbd "C-S-l") 'windmove-right)
 
   (evil-ex-define-cmd "q" 'kill-this-buffer)
+
+  ;; @see https://bitbucket.org/lyro/evil/issue/511/let-certain-minor-modes-key-bindings
+  (eval-after-load 'ggtags
+    '(progn
+       (evil-make-overriding-map ggtags-mode-map 'normal)
+       ;; force update evil keymaps after ggtags-mode loaded
+       (add-hook 'ggtags-mode-hook #'evil-normalize-keymaps)))
 
   ;; Global modes
   ;; ============
@@ -294,7 +310,6 @@
   ;; Window sizes follow the golden ratio
   (spacemacs/toggle-golden-ratio-on)
 
-
   ;; Hooks
   ;; =====
   (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
@@ -305,6 +320,10 @@
   (add-hook 'clojure-mode-hook          #'enable-paredit-mode)
   (add-hook 'cider-repl-mode-hook       #'enable-paredit-mode)
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  ;; Don't spell-check programming buffers
+  ;; I wish I could do this using spacemacs functions but it
+  ;; doesn't seem to work with spacemacs/toggle-spell-checking-off
+  (add-hook 'prog-mode-hook #'flyspell-mode-off)
 
   ;; OCaml
   ;; =====
