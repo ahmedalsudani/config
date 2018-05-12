@@ -1,12 +1,15 @@
 # . ~/.env
 
-if test (tty) = '/dev/tty2' -a -z "$TOP_FISH"
-    setenv TOP_FISH '1'
-    zsh -c '. ~/.profile && fish'; and exit
-end
+# Leaving temporary. This doesn't belong here
+# if test (tty) = '/dev/tty2' -a -z "$TOP_FISH"
+#     setenv TOP_FISH '1'
+#     zsh -c '. ~/.profile && fish'; and exit
+# end
 
-set -gx PATH $PATH ~/bin
+# You should set up path in /etc/fish/conf.d/bin.fish
+# set -gx PATH $PATH ~/bin
 
+# This should also be moved to /etc/
 if not ssh-add -l >/dev/null 2>&1; and test -e ~/.ssh/id_rsa
     ssh-add ~/.ssh/id_rsa
 end

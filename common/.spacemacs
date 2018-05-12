@@ -47,6 +47,7 @@
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '()
    dotspacemacs-install-packages 'used-only)
+  ; Isn't working
   '((spell-checking :variables spell-checking-enable-by-default nil)))
 
 (defun dotspacemacs/init ()
@@ -323,6 +324,8 @@
   ;; Don't spell-check programming buffers
   ;; I wish I could do this using spacemacs functions but it
   ;; doesn't seem to work with spacemacs/toggle-spell-checking-off
+  ;; This damn thing doesn't seem to work either
+  ;; TODO Look into what spacemacs is doing
   (add-hook 'prog-mode-hook #'flyspell-mode-off)
 
   ;; OCaml
