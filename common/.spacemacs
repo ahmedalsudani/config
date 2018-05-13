@@ -32,7 +32,8 @@
      perforce
      spacemacs-evil
      spacemacs-ui-visual
-     spell-checking
+     ;; A real PITA
+     ;spell-checking
      syntax-checking
      themes-megapack
      version-control
@@ -47,8 +48,7 @@
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '()
    dotspacemacs-install-packages 'used-only)
-  ; Isn't working
-  '((spell-checking :variables spell-checking-enable-by-default nil)))
+  )
 
 (defun dotspacemacs/init ()
   (setq-default
@@ -321,12 +321,6 @@
   (add-hook 'clojure-mode-hook          #'enable-paredit-mode)
   (add-hook 'cider-repl-mode-hook       #'enable-paredit-mode)
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
-  ;; Don't spell-check programming buffers
-  ;; I wish I could do this using spacemacs functions but it
-  ;; doesn't seem to work with spacemacs/toggle-spell-checking-off
-  ;; This damn thing doesn't seem to work either
-  ;; TODO Look into what spacemacs is doing
-  (add-hook 'prog-mode-hook #'flyspell-mode-off)
 
   ;; OCaml
   ;; =====
