@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
 
-if [[ -z $1 ]]; then
-    hostname="$(hostname)"
-else
-    hostname="$1"
-fi
-
-echo hostname: $hostname
-
-for i in common "$hostname"; do
+for i in "$@"; do
     stow -v -t "$HOME" "$i"
 done
