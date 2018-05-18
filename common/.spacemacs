@@ -41,9 +41,10 @@
    dotspacemacs-additional-packages
    '(
      idle-highlight-mode
+     org-caldav
      paredit
      smartscan
-     org-caldav
+     ztree
      )
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '()
@@ -101,11 +102,10 @@
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spolsky
-                         apropospriate-light
-                         default
-                         monokai
+   dotspacemacs-themes '(apropospriate-light
                          ritchie
+                         monokai
+                         spolsky
                          monochrome-bright
                          tango-plus
                          tsdh-dark)
@@ -114,7 +114,7 @@
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 17
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -282,6 +282,9 @@
     (load custom-file))
 
   (setq-default spacemacs-show-trailing-whitespace nil)
+
+  (setq p4-open-in-changelist t)
+  (setq vc-follow-symlinks t)
 
   ;; Key bindings
   ;; ============

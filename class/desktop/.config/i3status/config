@@ -31,4 +31,3 @@ load {
 disk "/" {
 	format = "%free"
 }
-

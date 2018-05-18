@@ -48,7 +48,7 @@ bindsym $mod+Ctrl+f exec firefox
 bindsym $mod+Ctrl+c exec google-chrome-stable
 
 # start emacs
-bindsym $mod+Ctrl+e exec emacs
+bindsym $mod+Ctrl+e exec emacsclient -c
 
 # kill focused window
 bindsym $mod+Shift+Q kill
