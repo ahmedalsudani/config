@@ -240,7 +240,7 @@
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -278,10 +278,16 @@
   (setq custom-file (expand-file-name ".custom.el" user-home-directory)))
 
 (defun dotspacemacs/user-config ()
+  ;; Stop modifying init.el
   (when (file-exists-p custom-file)
     (load custom-file))
 
+  ;; Stop cluttering my FS tree
+  (setq backup-directory-alist
+        `(("." . ,(concat user-emacs-directory "backups"))))
+
   (setq-default spacemacs-show-trailing-whitespace nil)
+  (setq TeX-auto-save nil)
 
   (setq p4-open-in-changelist t)
   (setq vc-follow-symlinks t)
