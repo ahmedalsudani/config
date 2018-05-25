@@ -1,5 +1,8 @@
 ;; -*- mode: emacs-lisp -*-
 
+;; TODO Figure out how to turn autofill on for text modes (and comments if
+;; possible)
+
 (defun dotspacemacs/layers ()
   (setq-default
    dotspacemacs-distribution 'spacemacs-base
