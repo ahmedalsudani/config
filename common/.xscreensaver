@@ -19,7 +19,7 @@ nice:		10
 memoryLimit:	0
 fade:		False
 unfade:		False
-fadeSeconds:	0:00:03
+fadeSeconds:	0:00:01
 fadeTicks:	20
 captureStderr:	True
 ignoreUninstalledPrograms:False
@@ -39,7 +39,7 @@ selected:	167
 
 textMode:	file
 textLiteral:	XScreenSaver
-textFile:	
+textFile:
 textProgram:	fortune
 textURL:	https://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=rss
 
@@ -284,4 +284,3 @@ procInterrupts:	True
 xinputExtensionDev: False
 overlayStderr:	True
 authWarningSlack:   20
-
