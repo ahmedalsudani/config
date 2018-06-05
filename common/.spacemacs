@@ -105,13 +105,18 @@
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(apropospriate-light
-                         ritchie
-                         monokai
+   dotspacemacs-themes '(espresso
+                         tango
+                         apropospriate-light
                          spolsky
-                         monochrome-bright
-                         tango-plus
-                         tsdh-dark)
+                         ritchie
+                         ;; anti-zenburn
+                         ;; farmhouse-light
+                         ;; monokai
+                         ;; monochrome-bright
+                         ;; tango-plus
+                         ;; tsdh-dark
+                         )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -243,7 +248,7 @@
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers t
+   dotspacemacs-line-numbers nil
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
