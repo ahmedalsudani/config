@@ -3,7 +3,7 @@ URxvt.iso14755: False
 !URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 !URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.letterSpace: -1
-URxvt.font: xft:DejavuSansMono:pixelsize=16
+URxvt.font: xft:DejavuSansMono:pixelsize=26
 
 URxvt*scrollTtyOutput:      false
 URxvt*scrollWithBuffer:     true
