@@ -10,8 +10,14 @@ URxvt*scrollWithBuffer:     true
 URxvt*scrollTtyKeypress:    true
 URxvt*saveLines:            10000
 
+URxvt*inheritPixmap: true
+URxvt*transparent: true
+! URxvt*shading: 0 to 99 darkens, 101 to 200 lightens
+URxvt*shading: 185
+
 ! black
 *color0: #000000
+
 
 ! bright_black
 *color8: #73808d

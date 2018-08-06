@@ -11,34 +11,28 @@ set $mod Mod4
 # font for window titles. ISO 10646 = Unicode
 font pango:DejaVu Sans Mono 10.2
 
-exec sleep 1 && feh --bg-fill /home/ahmed/Pictures/che-stallman/che-stallman-wallpaper.png
-
-exec xscreensaver -no-splash
-exec redshift
-exec dunst &
-
 # Language
-bindsym $mod+F1 exec setxkbmap us -option
-bindsym $mod+F2 exec setxkbmap ar -option
-bindsym $mod+F3 exec setxkbmap cn -option
+bindsym $mod+F1 exec --no-startup-id setxkbmap us -option
+bindsym $mod+F2 exec --no-startup-id setxkbmap ar -option
+bindsym $mod+F3 exec --no-startup-id setxkbmap cn -option
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # control volume
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # screenshot
 #bindsym Print exec import -window root ~/Pictures/"Screenshot from $(date '+%F %T').png"
 #bindsym Print exec scrot ~/Pictures/"Screenshot from $(date '+%F %T').png"
 
 # lock screen
-bindsym $mod+Ctrl+l exec xscreensaver-command -lock
+bindsym $mod+Ctrl+l exec --no-startup-id xscreensaver-command -lock
 
 # monitor sleep
-bindsym $mod+Ctrl+s exec sleep 1 && xset dpms force off
+bindsym $mod+Ctrl+s exec --no-startup-id sleep 1 && xset dpms force off
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -87,7 +81,7 @@ bindsym $mod+f fullscreen
 # change container layout (stacked, tabbed, default)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout default
+bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -168,14 +162,19 @@ workspace_layout tabbed
 mouse_warping none
 focus_follows_mouse no
 
-exec unclutter -idle 2 &
-exec udevadm trigger --subsystem-match=input --action=change
+exec --no-startup-id sleep 1 && feh --bg-fill /home/ahmed/Pictures/che-stallman/che-stallman-wallpaper.png
+
+exec --no-startup-id xscreensaver -no-splash
+exec --no-startup-id redshift
+exec --no-startup-id dunst &
+exec --no-startup-id unclutter -idle 2 &
+exec --no-startup-id udevadm trigger --subsystem-match=input --action=change
+exec --no-startup-id caffeine
 exec i3-sensible-terminal
-exec caffeine
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	status_command i3status -c ~/.config/i3status/config
-        tray_output primary
+    status_command i3status -c ~/.config/i3status/config
+    tray_output primary
 }

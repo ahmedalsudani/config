@@ -11,7 +11,10 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
-     c-c++
+     yaml
+     (c-c++ :variables
+            c-c++-default-mode-for-headers 'c++-mode
+            c-c++-enable-clang-support t)
      ;; This is a private layer
      ;; (https://github.com/rgemulla/spacemacs-layers/tree/master/%2Blang/elpy)
      ;; Using it because anacanda-mode is complaining that it can't install the
@@ -28,6 +31,7 @@
 
      auto-completion
      better-defaults
+     colors
      git
      gtags
      helm
@@ -294,6 +298,11 @@
   (setq backup-directory-alist
         `(("." . ,(concat user-emacs-directory "backups"))))
 
+  (setq c-default-style "linux"
+        c-basic-offset 4)
+
+  (setq clang-format-style-option "WebKit")
+
   (setq-default spacemacs-show-trailing-whitespace nil)
   (setq TeX-auto-save nil)
 
@@ -306,6 +315,7 @@
   (global-set-key (kbd "C-S-k") 'windmove-up)
   (global-set-key (kbd "C-S-h") 'windmove-left)
   (global-set-key (kbd "C-S-l") 'windmove-right)
+  ;(define-key ztree-mode-map (kbd "o") 'ztree-perform-soft-action)
 
   (evil-ex-define-cmd "q" 'kill-this-buffer)
 
@@ -315,6 +325,10 @@
        (evil-make-overriding-map ggtags-mode-map 'normal)
        ;; force update evil keymaps after ggtags-mode loaded
        (add-hook 'ggtags-mode-hook #'evil-normalize-keymaps)))
+
+  ;; The middle finger is longer than the index finger. So d is pressed first
+  ;; when I move both fingers toward the keyboard
+  (setq-default evil-escape-key-sequence "df")
 
   ;; Global modes
   ;; ============
