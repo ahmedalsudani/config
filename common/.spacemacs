@@ -11,7 +11,6 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
-     yaml
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode
             c-c++-enable-clang-support t)
@@ -23,12 +22,17 @@
      emacs-lisp
      go
      haskell
+     html
+     javascript
      latex
      markdown
      ocaml
      ;python
+     rust
      shell-scripts
-
+     sql
+     yaml
+     ;source-control
      auto-completion
      better-defaults
      colors
@@ -37,6 +41,7 @@
      helm
      org
      perforce
+     ranger
      spacemacs-evil
      spacemacs-ui-visual
      ;; A real PITA
@@ -309,6 +314,9 @@
   (setq p4-open-in-changelist t)
   (setq vc-follow-symlinks t)
 
+  (setq ranger-cleanup-on-disable t)
+  (setq ranger-cleanup-eagerly t)
+
   ;; Key bindings
   ;; ============
   (global-set-key (kbd "C-S-j") 'windmove-down)
@@ -318,6 +326,7 @@
   ;(define-key ztree-mode-map (kbd "o") 'ztree-perform-soft-action)
 
   (evil-ex-define-cmd "q" 'kill-this-buffer)
+  (evil-ex-define-cmd "wq" 'save-buffer)
 
   ;; @see https://bitbucket.org/lyro/evil/issue/511/let-certain-minor-modes-key-bindings
   (eval-after-load 'ggtags

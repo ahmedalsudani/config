@@ -1,1 +1,9 @@
-# set -gx PATH $PATH ~/bin
+set bindirs ~/bin \
+            ~/.local/bin \
+            ~/.cargo/bin
+
+for i in $bindirs
+    if test -d "$i"
+        set -gx PATH "$i" $PATH
+    end
+end
