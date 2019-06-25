@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.39 for ahmed on Tue Jun  5 09:37:40 2018.
+# Written by xscreensaver-demo 5.42 for ahmed on Tue Jun 25 13:49:56 2019.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
@@ -34,17 +34,17 @@ grabVideoFrames:    False
 chooseRandomImages: True
 imageDirectory:	/home/ahmed/Pictures/screensaver
 
-mode:		random
+mode:		random-same
 selected:	167
 
 textMode:	file
 textLiteral:	XScreenSaver
-textFile:
+textFile:	
 textProgram:	fortune
 textURL:	https://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=rss
 
 programs:								      \
--				maze -root				    \n\
+				maze -root				    \n\
 - GL: 				superquadrics -root			    \n\
 -				attraction -root			    \n\
 -				blitspin -root				    \n\
@@ -71,7 +71,7 @@ programs:								      \
 -				galaxy -root				    \n\
 -				goop -root				    \n\
 -				grav -root				    \n\
-				ifs -root				    \n\
+-				ifs -root				    \n\
 - GL: 				jigsaw -root				    \n\
 -				julia -root				    \n\
 -				kaleidescope -root			    \n\
@@ -133,7 +133,7 @@ programs:								      \
 -				webcollage -root			    \n\
 -				xflame -root				    \n\
 -				xmatrix -root				    \n\
-  GL: 				gflux -root				    \n\
+- GL: 				gflux -root				    \n\
 -				nerverot -root				    \n\
 -				xrayswarm -root				    \n\
 -				xspirograph -root			    \n\
@@ -187,11 +187,11 @@ programs:								      \
 - GL: 				gleidescope -root			    \n\
 - GL: 				glknots -root				    \n\
 - GL: 				glmatrix -root				    \n\
-  GL: 				glslideshow -root			    \n\
+- GL: 				glslideshow -root			    \n\
 - GL: 				hypertorus -root			    \n\
 - GL: 				jigglypuff -root			    \n\
 -				metaballs -root				    \n\
-  GL: 				mirrorblob -root			    \n\
+- GL: 				mirrorblob -root			    \n\
 -				piecewise -root				    \n\
 - GL: 				polytopes -root				    \n\
 -				pong -root				    \n\
@@ -212,7 +212,7 @@ programs:								      \
 - GL: 				polyhedra -root				    \n\
 - GL: 				providence -root			    \n\
 				substrate -root				    \n\
--				wormhole -root				    \n\
+				wormhole -root				    \n\
 - GL: 				antmaze -root				    \n\
 - GL: 				boing -root				    \n\
 -				boxfit -root				    \n\
@@ -271,8 +271,12 @@ programs:								      \
 - GL: 				vigilance -root				    \n\
 - GL: 				crumbler -root				    \n\
 - GL: 				maze3d -root				    \n\
-  GL: 				peepers -root				    \n\
+- GL: 				peepers -root				    \n\
 - GL: 				razzledazzle -root			    \n\
+-				filmleader -root			    \n\
+-				glitchpeg -root				    \n\
+- GL: 				handsy -root				    \n\
+-				vfeedback -root				    \n\
 
 
 pointerPollTime:    0:00:05
@@ -284,3 +288,4 @@ procInterrupts:	True
 xinputExtensionDev: False
 overlayStderr:	True
 authWarningSlack:   20
+
