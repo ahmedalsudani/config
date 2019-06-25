@@ -27,7 +27,7 @@
      latex
      markdown
      ocaml
-     ;python
+     python
      rust
      shell-scripts
      sql
@@ -131,7 +131,7 @@
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 26
+                               :size 15
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)

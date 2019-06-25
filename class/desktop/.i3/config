@@ -165,7 +165,6 @@ focus_follows_mouse no
 exec --no-startup-id sleep 1 && feh --bg-fill /home/ahmed/Pictures/che-stallman/che-stallman-wallpaper.png
 
 exec --no-startup-id xscreensaver -no-splash
-exec --no-startup-id redshift
 exec --no-startup-id dunst &
 exec --no-startup-id unclutter -idle 2 &
 exec --no-startup-id udevadm trigger --subsystem-match=input --action=change
