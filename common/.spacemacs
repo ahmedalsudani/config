@@ -54,6 +54,7 @@
    '(
      idle-highlight-mode
      org-caldav
+     key-chord
      paredit
      smartscan
      ztree
@@ -335,9 +336,17 @@
        ;; force update evil keymaps after ggtags-mode loaded
        (add-hook 'ggtags-mode-hook #'evil-normalize-keymaps)))
 
-  ;; The middle finger is longer than the index finger. So d is pressed first
+  ;(key-chord-define evil-insert-state-map "kj" 'evil-normal-state)
+  ;; The middle finger is longer than the index finger. So k is pressed first
   ;; when I move both fingers toward the keyboard
-  (setq-default evil-escape-key-sequence "df")
+  (setq-default evil-escape-key-sequence "kj")
+
+  ;; Chord for opening major mode bindings from insert mode
+  ;; spacemacs seems to make this hard to do without configuring core functions
+  ;; ... or maybe rewriting them somehow in the config. This ugly hack looks
+  ;; like the easier route
+  (key-chord-define evil-insert-state-map "iu"
+                    '(lambda () (interactive) (setq unread-command-events (listify-key-sequence "\C-\M-m"))))
 
   ;; Global modes
   ;; ============
@@ -350,6 +359,8 @@
   (global-evil-search-highlight-persist 0)
   ;; Window sizes follow the golden ratio
   (spacemacs/toggle-golden-ratio-on)
+  ;; key chord bindings (like piano chords)
+  (key-chord-mode 1)
 
   ;; Hooks
   ;; =====
