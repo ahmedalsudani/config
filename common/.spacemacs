@@ -325,6 +325,13 @@
   (global-set-key (kbd "C-S-h") 'windmove-left)
   (global-set-key (kbd "C-S-l") 'windmove-right)
   ;(define-key ztree-mode-map (kbd "o") 'ztree-perform-soft-action)
+  ;; I added this for org-mode so I can insert a new item from insert-mode
+  ;; because for some reason, (clever-insert-item) is only called when you press
+  ;; "o" in normal state. But then I bumped into "C-o o", which does the same
+  ;; and is more versatile ... instead of this single trick, I should find a
+  ;; good synonym for C-o and give myself the option of calling all normal
+  ;; bindings from insert
+  ;(define-key evil-insert-state-map (kbd "C-S-<return>") (lambda () (interactive) (clever-insert-item)))
 
   (evil-ex-define-cmd "q" 'kill-this-buffer)
   (evil-ex-define-cmd "wq" 'save-buffer)
@@ -336,10 +343,12 @@
        ;; force update evil keymaps after ggtags-mode loaded
        (add-hook 'ggtags-mode-hook #'evil-normalize-keymaps)))
 
-  ;(key-chord-define evil-insert-state-map "kj" 'evil-normal-state)
   ;; The middle finger is longer than the index finger. So k is pressed first
   ;; when I move both fingers toward the keyboard
-  (setq-default evil-escape-key-sequence "kj")
+  ;(setq-default evil-escape-key-sequence "kj")
+  ;; key chord is better. Can be pressed simultaneously
+  (key-chord-define evil-insert-state-map "kj" 'evil-normal-state)
+  (key-chord-define evil-insert-state-map "df" 'evil-normal-state)
 
   ;; Chord for opening major mode bindings from insert mode
   ;; spacemacs seems to make this hard to do without configuring core functions
