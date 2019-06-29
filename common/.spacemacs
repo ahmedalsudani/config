@@ -349,13 +349,17 @@
   ;; key chord is better. Can be pressed simultaneously
   (key-chord-define evil-insert-state-map "kj" 'evil-normal-state)
   (key-chord-define evil-insert-state-map "df" 'evil-normal-state)
+  (key-chord-define evil-insert-state-map "m," 'evil-execute-in-normal-state)
+
+  ;; HALLELUJAH! I found a workaround for this ugly hack. Press "m," followed by ","
+  ;; Much nicer.
 
   ;; Chord for opening major mode bindings from insert mode
   ;; spacemacs seems to make this hard to do without configuring core functions
   ;; ... or maybe rewriting them somehow in the config. This ugly hack looks
   ;; like the easier route
-  (key-chord-define evil-insert-state-map "iu"
-                    '(lambda () (interactive) (setq unread-command-events (listify-key-sequence "\C-\M-m"))))
+  ;(key-chord-define evil-insert-state-map "iu"
+  ;                  '(lambda () (interactive) (setq unread-command-events (listify-key-sequence "\C-\M-m"))))
 
   ;; Global modes
   ;; ============
