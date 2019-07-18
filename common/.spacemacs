@@ -46,7 +46,8 @@
      spacemacs-ui-visual
      ;; A real PITA
      ;spell-checking
-     syntax-checking
+     ;; screw you and your ticket too
+     ;syntax-checking
      themes-megapack
      version-control
      )
@@ -120,6 +121,7 @@
                          tango
                          apropospriate-light
                          ritchie
+                         subatomic256
                          ;; anti-zenburn
                          ;; farmhouse-light
                          ;; monokai
@@ -132,7 +134,7 @@
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 15
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -371,7 +373,7 @@
   ;; moving cursor
   (global-evil-search-highlight-persist 0)
   ;; Window sizes follow the golden ratio
-  (spacemacs/toggle-golden-ratio-on)
+  ;; (spacemacs/toggle-golden-ratio-on)
   ;; key chord bindings (like piano chords)
   (key-chord-mode 1)
 

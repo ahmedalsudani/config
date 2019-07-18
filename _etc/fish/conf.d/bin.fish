@@ -1,4 +1,5 @@
 set bindirs ~/bin \
+            ~/nvbin \
             ~/.local/bin \
             ~/.cargo/bin
 
