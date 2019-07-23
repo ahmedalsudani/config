@@ -53,6 +53,8 @@
      )
    dotspacemacs-additional-packages
    '(
+     ag
+     evil-collection
      idle-highlight-mode
      org-caldav
      key-chord
@@ -386,7 +388,9 @@
   (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
   (add-hook 'clojure-mode-hook          #'enable-paredit-mode)
   (add-hook 'cider-repl-mode-hook       #'enable-paredit-mode)
-  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  ;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+  (with-eval-after-load 'ztree-diff (require 'evil-collection-ztree) (evil-collection-ztree-setup))
 
   ;; OCaml
   ;; =====
