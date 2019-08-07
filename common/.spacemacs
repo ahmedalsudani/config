@@ -118,7 +118,13 @@
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(tango ; tango first because it looks good in terminal
+   dotspacemacs-themes '(tango-plus ; tango first because it looks good in terminal
+                         minimal-light
+                         twilight-bright
+                         majapahit-light
+                         hemisu-light
+                         sanityinc-solarized-light
+                         tsdh-light
                          espresso
                          spolsky
                          afternoon
@@ -365,6 +371,10 @@
   ;; like the easier route
   ;(key-chord-define evil-insert-state-map "iu"
   ;                  '(lambda () (interactive) (setq unread-command-events (listify-key-sequence "\C-\M-m"))))
+
+  ;; TODO not working yet
+  ;; (evil-define-key 'normal evil-calendar-mode-map
+  ;;   "<ret>" 'org-calendar-select)
 
   ;; Global modes
   ;; ============
