@@ -27,7 +27,9 @@
      latex
      markdown
      ocaml
+     php
      python
+     ruby
      rust
      shell-scripts
      sql
@@ -317,6 +319,12 @@
 
   (setq c-default-style "linux"
         c-basic-offset 4)
+
+  ;; Some actions insert at the cursor. So if you want to insert after the last
+  ;; character, you need this. e.g. org insert subheading.
+  ;; Some of those functions should probably be rewritten so they start a newline
+  ;; but :shrug: this is easier
+  (setq evil-move-cursor-back nil)
 
   (setq clang-format-style-option "WebKit")
 
