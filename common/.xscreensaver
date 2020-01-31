@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.42 for ahmed on Tue Jun 25 13:49:56 2019.
+# Written by xscreensaver-demo 5.42 for ahmed on Mon Jul  8 17:20:44 2019.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
@@ -270,7 +270,7 @@ programs:								      \
 - GL: 				esper -root				    \n\
 - GL: 				vigilance -root				    \n\
 - GL: 				crumbler -root				    \n\
-- GL: 				maze3d -root				    \n\
+  GL: 				maze3d -root				    \n\
 - GL: 				peepers -root				    \n\
 - GL: 				razzledazzle -root			    \n\
 -				filmleader -root			    \n\
