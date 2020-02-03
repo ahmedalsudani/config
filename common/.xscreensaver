@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.42 for ahmed on Mon Jul  8 17:20:44 2019.
+# Written by xscreensaver-demo 5.43 for ahmed on Wed Jan 29 13:28:53 2020.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
@@ -34,7 +34,7 @@ grabVideoFrames:    False
 chooseRandomImages: True
 imageDirectory:	/home/ahmed/Pictures/screensaver
 
-mode:		random-same
+mode:		one
 selected:	167
 
 textMode:	file
@@ -277,6 +277,8 @@ programs:								      \
 -				glitchpeg -root				    \n\
 - GL: 				handsy -root				    \n\
 -				vfeedback -root				    \n\
+  GL: 				deepstars -root				    \n\
+  GL: 				gravitywell -root			    \n\
 
 
 pointerPollTime:    0:00:05

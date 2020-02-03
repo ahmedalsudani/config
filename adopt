@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+echo "TODO: implement this"
+
+echo "It needs to accept a filename and \"adopt\" that file by bringing it into"
+echo "the appropriate directory and creating a link... possibly using stow"
