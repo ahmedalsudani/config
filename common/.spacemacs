@@ -66,7 +66,7 @@
      ztree
      )
    dotspacemacs-frozen-packages '()
-   dotspacemacs-excluded-packages '(window-purpose)
+   dotspacemacs-excluded-packages '()
    dotspacemacs-install-packages 'used-only)
   )
 
@@ -122,8 +122,8 @@
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         leuven
                          adwaita
+                         leuven
                          tsdh-light
                          tango-plus
                          minimal-light
@@ -135,8 +135,8 @@
                          spolsky
                          afternoon
                          apropospriate-light
-                         ritchie
                          subatomic256
+                         ritchie
                          ;; anti-zenburn
                          ;; farmhouse-light
                          ;; monokai
@@ -275,7 +275,7 @@
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
