@@ -423,4 +423,8 @@
   (let ((opam-file (expand-file-name ".emacs.d/opam-user-setup.el"
                                      user-home-directory)))
     (when (file-exists-p opam-file)
-      (require 'opam-user-setup opam-file))))
+      (require 'opam-user-setup opam-file)))
+
+  ;; Line number format. 4-digit-wide, space after
+  (setq linum-format "%4d ")
+  )
