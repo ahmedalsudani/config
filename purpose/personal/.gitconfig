@@ -17,5 +17,6 @@
 	required = true
 [pull]
 	default = current
+	ff = only
 [remote]
 	pushDefault = origin
