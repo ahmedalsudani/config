@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+DIR=$(dirname $(realpath $0))
+
+sudo cp -r --no-preserve ownership "$DIR/fish/conf.d" -T /etc/fish/conf.d
