@@ -52,16 +52,7 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-; Some dumb ANNOYING hook keeps enabling hl-line-mode. It's not even on buffer
-; open ... it's when I first move the cursor ... UGH
-;
-; https://github.com/hlissner/doom-emacs/issues/4206
-;
-; "(package! hl-line :disable t)", which is not the proper solution, does the
-; trick for me. It beats chasing down the annoying hook
-;
-;(remove-hook 'doom-first-buffer-hook #'global-hl-line-mode)
-;(add-hook 'text-mode-hook (lambda () (hl-line-mode -1)))
+(remove-hook 'doom-first-buffer-hook #'global-hl-line-mode)
 
 (key-chord-define evil-insert-state-map "kj" 'evil-normal-state)
 (key-chord-define evil-insert-state-map "df" 'evil-normal-state)
