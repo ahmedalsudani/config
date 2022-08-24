@@ -61,3 +61,8 @@
 
 (setq turn-on-auto-fill t)
 (setq evil-move-beyond-eol t)
+(setq c-default-style "linux"
+      c-basic-offset 4)
+
+(evil-ex-define-cmd "q" 'kill-this-buffer)
+(evil-ex-define-cmd "wq" 'save-buffer)

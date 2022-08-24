@@ -3,6 +3,7 @@
 /Vagrantfile
 /.vagrant
 /*.iml
+.projectile
 GPATH
 GRTAGS
 GTAGS
